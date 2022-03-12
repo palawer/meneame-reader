@@ -34,33 +34,67 @@ p {
   padding: 0;
 }
 
-h1 a {
-  display: block;
+h1 {
   color: #aaa;
   border-bottom: 1px solid #333;
-  padding: 10px;
-  text-decoration: none;
+  padding: 15px 10px;
+  font-size: 22px;
 }
 
 a {
   color: #1e8ad6;
 }
 
-#stories,
-#comments {
+ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-#stories li a {
-  display: block;
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#content {
+  overflow-x: hidden;
+}
+
+/* Story list */
+#stories li,
+#story {
   padding: 10px;
   border-bottom: 1px solid #333;
-  text-decoration: none;
+}
+.story-title {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #1e8ad6;
+}
+.story-content,
+.comment-content {
   font-size: 14px;
   line-height: 1.3;
+  color: #aaa;
+  margin-bottom: 5px;
 }
+.story-thumb {
+  width: 80px;
+  float: right;
+  margin-left: 10px;
+}
+.story-detail {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #1e8ad6;
+}
+.story-links {
+  display: flex;
+  gap: 10px;
+}
+
+/* Comments */
 
 #comments li {
   padding: 10px;
@@ -68,12 +102,20 @@ a {
   font-size: 14px;
   line-height: 1.3;
 }
-
-#story {
-  padding: 10px;
-  border-bottom: 2px solid #333;
-  font-size: 14px;
-  line-height: 1.3;
+.comment-karma {
+  float: right;
+}
+.comment-medal {
+  font-size: 22px;
+}
+.comment-detail {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.comment-emoji {
+  width: 18px;
+  height: 18px;
+  vertical-align: -4px;
 }
 
 .spinner {
