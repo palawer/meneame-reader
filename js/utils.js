@@ -1,5 +1,6 @@
 "use strict";
 
+const BASE_URL = "/meneame-reader";
 const PROXY_URL = "https://api.allorigins.win/get?url=";
 const MEDALS = {
   0: "🥇",

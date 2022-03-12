@@ -23,7 +23,7 @@ function renderStory(story, showLinks = false) {
   thumb.className = "story-thumb";
   thumb.src = story.thumb;
   thumb.onerror = (e) => {
-    e.target.src = "./img/noimg.jpg";
+    e.target.src = BASE_URL + "/img/noimg.jpg";
   };
   container.appendChild(thumb);
 

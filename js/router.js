@@ -1,5 +1,3 @@
-const BASE_URL = "/meneame-reader";
-
 class Router {
   /**
    * Metodo inicial.
@@ -17,13 +15,9 @@ class Router {
    * @return {void}.
    */
   initRouter() {
-    const {
-      location: { pathname = "/" },
-    } = window;
-    if (window.location.host === "palawer.github.io") {
-      pathname = pathname.replace(BASE_URL, "");
-    }
+    const pathname = window.location.pathname.replace(BASE_URL, "");
     const URI = pathname === "/" ? "home" : pathname.replace("/", "");
+    console.log(URI);
     this.load(URI);
   }
 
@@ -34,13 +28,13 @@ class Router {
    */
   load(page = "home", extraParam) {
     const { paths } = this;
-    const { path, template, init } = paths[page] || paths.error;
+    let { path, template, init } = paths[page] || paths.error;
     const $CONTAINER = document.querySelector("#content");
     $CONTAINER.innerHTML = template;
     if (init) {
       init(extraParam);
     }
-
+    path = BASE_URL + path;
     window.history.pushState({}, "Genial", path);
   }
 }
