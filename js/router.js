@@ -17,7 +17,6 @@ class Router {
   initRouter() {
     const pathname = window.location.pathname.replace(BASE_URL, "");
     const URI = pathname === "/" ? "home" : pathname.replace("/", "");
-    console.log(URI);
     this.load(URI);
   }
 

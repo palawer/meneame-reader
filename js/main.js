@@ -132,7 +132,6 @@ const PATHS = {
       </ul>`,
     init: () => {
       fetchLastStories().then((data) => {
-        console.log(data);
         renderListOfStories(data);
       });
     },
@@ -158,8 +157,6 @@ const PATHS = {
 const ROUTER = new Router(PATHS);
 
 window.addEventListener("DOMContentLoaded", (event) => {
-  console.log("DOM fully loaded and parsed");
-
   const header = document.getElementById("header");
   header.onclick = () => {
     ROUTER.load("home");
