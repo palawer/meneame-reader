@@ -22,6 +22,9 @@ function renderStory(story, showLinks = false) {
   const thumb = document.createElement("img");
   thumb.className = "story-thumb";
   thumb.src = story.thumb;
+  thumb.onerror = (e) => {
+    e.target.src = "./img/noimg.jpg";
+  };
   container.appendChild(thumb);
 
   // content
