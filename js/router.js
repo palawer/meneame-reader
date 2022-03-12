@@ -1,3 +1,5 @@
+const BASE_URL = "/meneame-reader";
+
 class Router {
   /**
    * Metodo inicial.
@@ -18,6 +20,9 @@ class Router {
     const {
       location: { pathname = "/" },
     } = window;
+    if (window.location.host === "palawer.github.io") {
+      pathname = pathname.replace(BASE_URL, "");
+    }
     const URI = pathname === "/" ? "home" : pathname.replace("/", "");
     this.load(URI);
   }
