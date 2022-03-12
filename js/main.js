@@ -11,34 +11,43 @@ function renderListOfStories(stories) {
     a.textContent = title;
     a.href = "#" + id;
     a.onclick = () => {
-      ROUTER.load("story");
+      ROUTER.load("story", stories[i]);
     };
     li.appendChild(a);
     placeholder.appendChild(li);
   }
 }
 
-function startApp() {
-  fetchLastStories().then((data) => {
-    console.log(data);
-    renderListOfStories(data);
-  });
-  /*
-  fetchComments(3636716).then((data) => {
-    console.log(data);
-  });
-  */
+function renderStoryComments(story, comments) {
+  const st = document.getElementById("story");
+  st.textContent = story.content;
+
+  // comments
+  const placeholder = document.getElementById("comments");
+  placeholder.replaceChildren();
+
+  // sort comments by karma
+  comments.sort(compareKarma);
+
+  for (let i = 0; i < comments.length; i++) {
+    const { id, user, content, karma } = comments[i];
+    const li = document.createElement("li");
+    li.textContent = karma + ") " + user + ": " + content;
+    placeholder.appendChild(li);
+  }
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {
   console.log("DOM fully loaded and parsed");
-  //startApp();
 });
 
 const PATHS = {
   home: {
     path: "/",
-    template: `<ul id="stories">Loading...</ul>`,
+    template: `
+      <ul id="stories">
+        <div class="spinner"></div>
+      </ul>`,
     init: () => {
       fetchLastStories().then((data) => {
         console.log(data);
@@ -48,7 +57,19 @@ const PATHS = {
   },
   story: {
     path: "/story",
-    template: `<h1>👩🏻‍💻 Sobre mi</h1>`,
+    template: `
+      <div id="story">
+        <div class="spinner"></div>
+      </div>
+      <ul id="comments">
+        <div class="spinner"></div>
+      </ul>
+    `,
+    init: (story) => {
+      fetchComments(story.id).then((comments) => {
+        renderStoryComments(story, comments);
+      });
+    },
   },
 };
 

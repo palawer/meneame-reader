@@ -27,13 +27,13 @@ class Router {
    *
    * @return {void}.
    */
-  load(page = "home") {
+  load(page = "home", extraParam) {
     const { paths } = this;
     const { path, template, init } = paths[page] || paths.error;
     const $CONTAINER = document.querySelector("#content");
     $CONTAINER.innerHTML = template;
     if (init) {
-      init();
+      init(extraParam);
     }
 
     window.history.pushState({}, "Genial", path);
