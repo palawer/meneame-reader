@@ -98,8 +98,12 @@ ul {
 }
 .story-links {
   display: flex;
-  gap: 10px;
-  margin-top: 5px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+  background-color: #434343;
+  padding: 15px 10px;
 }
 
 /* Comments */

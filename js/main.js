@@ -47,17 +47,21 @@ function renderStory(story, showLinks = false) {
 
   // source
   if (showLinks) {
+    const links = document.createElement("div");
+    links.className = "story-links";
+    container.appendChild(links);
+
     const source = document.createElement("a");
     source.href = story.source;
-    source.textContent = "Abrir fuente";
+    source.textContent = "Abrir fuente original";
     source.target = "_blank";
-    bottom.appendChild(source);
+    links.appendChild(source);
 
     const url = document.createElement("a");
     url.href = story.url;
-    url.textContent = "Abrir Menéame";
+    url.textContent = "Abrir en Menéame";
     url.target = "_blank";
-    bottom.appendChild(url);
+    links.appendChild(url);
   }
 
   return container;
@@ -66,7 +70,7 @@ function renderStory(story, showLinks = false) {
 function renderComment(comment, position) {
   const container = document.createElement("li");
   container.className = "clearfix comment-id";
-  container.id = comment.order;
+  container.id = "comment-" + comment.order;
 
   //karma
   const medal = MEDALS[position] || "";
