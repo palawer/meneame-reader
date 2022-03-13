@@ -64,7 +64,8 @@ function renderComment(comment, position) {
   const medal = MEDALS[position] || "";
   const karma = document.createElement("div");
   karma.className = "comment-karma";
-  karma.textContent = comment.karma + " " + medal;
+  karma.innerHTML =
+    comment.karma + ' <span class="comment-medal">' + medal + "</span>";
   container.appendChild(karma);
 
   // detail
@@ -101,15 +102,7 @@ function renderListOfStories(stories) {
   }
 }
 
-function renderStoryComments(story, comments) {
-  // story
-  const storyPlaceholder = document.getElementById("story");
-  storyPlaceholder.replaceChildren();
-
-  const storyNode = renderStory(story, true);
-  storyPlaceholder.appendChild(storyNode);
-
-  // comments
+function renderStoryComments(comments) {
   const commentsPlaceholder = document.getElementById("comments");
   commentsPlaceholder.replaceChildren();
 
@@ -139,26 +132,29 @@ const PATHS = {
   story: {
     path: "/story",
     template: `
-      <div id="story">
-        <div class="spinner"></div>
-      </div>
+      <div id="story"></div>
       <ul id="comments">
         <div class="spinner"></div>
       </ul>
     `,
     init: (story) => {
+      // story
+      const storyPlaceholder = document.getElementById("story");
+      const storyNode = renderStory(story, true);
+      storyPlaceholder.appendChild(storyNode);
+
+      // comments
       fetchComments(story.id).then((comments) => {
-        renderStoryComments(story, comments);
+        renderStoryComments(comments);
       });
     },
   },
 };
 
 const ROUTER = new Router(PATHS);
+const header = document.getElementById("header");
+header.onclick = () => {
+  ROUTER.load("home");
+};
 
-window.addEventListener("DOMContentLoaded", (event) => {
-  const header = document.getElementById("header");
-  header.onclick = () => {
-    ROUTER.load("home");
-  };
-});
+window.addEventListener("DOMContentLoaded", (event) => {});

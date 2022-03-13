@@ -20,8 +20,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 14px;
-  background-color: #111;
-  color: #aaa;
+  background-color: #222;
+  color: #fff;
 }
 
 h1,
@@ -76,7 +76,7 @@ ul {
 .comment-content {
   font-size: 14px;
   line-height: 1.3;
-  color: #aaa;
+  color: #fff;
 }
 .story-thumb {
   width: 80px;
@@ -86,7 +86,7 @@ ul {
 .story-detail {
   font-size: 12px;
   margin-bottom: 5px;
-  color: #1e8ad6;
+  color: #aaa;
 }
 .story-links {
   display: flex;
@@ -104,13 +104,16 @@ ul {
 }
 .comment-karma {
   float: right;
+  color: #aaa;
 }
 .comment-medal {
   font-size: 22px;
+  vertical-align: top;
 }
 .comment-detail {
   font-weight: bold;
   margin-bottom: 5px;
+  color: #aaa;
 }
 .comment-emoji {
   width: 18px;
