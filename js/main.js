@@ -14,8 +14,7 @@ function renderStory(story, showLinks = false) {
   const ts = story.date * 1000;
   const detail = document.createElement("div");
   detail.className = "story-detail";
-  detail.textContent =
-    "Por " + story.user + " a las " + new Date(ts).toLocaleString();
+  detail.textContent = story.user + " a las " + new Date(ts).toLocaleString();
   container.appendChild(detail);
 
   // thumb
@@ -33,23 +32,32 @@ function renderStory(story, showLinks = false) {
   content.textContent = story.content;
   container.appendChild(content);
 
+  // comments
+  const bottom = document.createElement("div");
+  bottom.className = "story-bottom";
+  container.appendChild(bottom);
+
+  const comments = document.createElement("div");
+  comments.textContent = story.comments + " comentarios";
+  bottom.appendChild(comments);
+
+  const sub = document.createElement("div");
+  sub.textContent = story.sub;
+  bottom.appendChild(sub);
+
   // source
   if (showLinks) {
-    const links = document.createElement("div");
-    links.className = "story-links";
-    container.appendChild(links);
-
     const source = document.createElement("a");
     source.href = story.source;
-    source.textContent = "Abrir fuente original";
+    source.textContent = "Abrir fuente";
     source.target = "_blank";
-    links.appendChild(source);
+    bottom.appendChild(source);
 
     const url = document.createElement("a");
     url.href = story.url;
-    url.textContent = "Abrir en Menéame";
+    url.textContent = "Abrir Menéame";
     url.target = "_blank";
-    links.appendChild(url);
+    bottom.appendChild(url);
   }
 
   return container;

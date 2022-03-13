@@ -38,7 +38,19 @@ function compareKarma(a, b) {
   return 0;
 }
 
+function urlify(text) {
+  //https://stackoverflow.com/a/1500501/1936822
+  var urlRegex = /(https?:\/\/[^\s]+)/g;
+  return text.replace(urlRegex, function (url) {
+    return '<a href="' + url + '" target="_blank">' + url + "</a>";
+  });
+  // or alternatively
+  // return text.replace(urlRegex, '<a href="$1">$1</a>')
+}
+
 function parseCommentContent(text) {
+  text = urlify(text);
+
   text = text.replace(
     ///(^|\s)(#[a-z\d-]+)/gi,
     /(^|\s)(#[0-9]+)/gi,
