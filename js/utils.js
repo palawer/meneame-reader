@@ -56,6 +56,7 @@ function parseCommentContent(text) {
     /(^|\s)(#[0-9]+)/gi,
     '$1<a href="$2">$2</a>'
   );
+
   // emojis
   text = text.replace(
     /(^|\s){([a-z\d-]+)}/gi,

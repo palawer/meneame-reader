@@ -65,7 +65,7 @@ function renderStory(story, showLinks = false) {
 
 function renderComment(comment, position) {
   const container = document.createElement("li");
-  container.className = "clearfix";
+  container.className = "clearfix comment-id";
   container.id = comment.order;
 
   //karma
