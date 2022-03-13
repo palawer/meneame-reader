@@ -65,7 +65,7 @@ function renderComment(comment, position) {
   const karma = document.createElement("div");
   karma.className = "comment-karma";
   karma.innerHTML =
-    comment.karma + ' <span class="comment-medal">' + medal + "</span>";
+    "k: " + comment.karma + ' <span class="comment-medal">' + medal + "</span>";
   container.appendChild(karma);
 
   // detail
